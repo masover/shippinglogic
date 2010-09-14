@@ -112,6 +112,8 @@ module Shippinglogic
             value.to_s
           when :datetime
             Time.parse(value.to_s)
+          when :hash
+            value.to_hash
           else
             value
           end

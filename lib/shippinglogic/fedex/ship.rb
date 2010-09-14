@@ -168,6 +168,7 @@ module Shippinglogic
       # misc options
       attribute :just_validate,               :boolean,     :default => false
       attribute :rate_request_types,          :array,       :default => ["ACCOUNT"]
+      attribute :customer_references,         :hash
       
       private
         def target

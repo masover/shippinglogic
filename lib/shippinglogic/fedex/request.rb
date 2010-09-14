@@ -115,6 +115,15 @@ module Shippinglogic
                 end
               end
             end
+            
+            if respond_to?(:customer_references) && customer_references
+              customer_references.each do |type, value|
+                b.CustomerReferences do
+                  b.CustomerReferenceType type
+                  b.Value value
+                end
+              end
+            end
           end
         end
         
