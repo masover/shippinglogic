@@ -59,7 +59,9 @@ module Shippinglogic
         # A convenience method for building the address block in your XML request
         def build_address(b, type)
           b.Address do
-            b.StreetLines send("#{type}_streets") if send("#{type}_streets")
+            if street_lines = send("#{type}_streets")
+              street_lines.split("\n").each { |line| b.StreetLines line }
+            end
             b.City send("#{type}_city") if send("#{type}_city")
             b.StateOrProvinceCode state_code(send("#{type}_state")) if send("#{type}_state")
             b.PostalCode send("#{type}_postal_code") if send("#{type}_postal_code")
