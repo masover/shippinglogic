@@ -192,7 +192,7 @@ module Shippinglogic
         def parse_response(response)
           return [] if !response[:rate_reply_details]
           
-          response[:rate_reply_details].collect do |details|
+          [response[:rate_reply_details]].flatten.collect do |details|
             shipment_detail = details[:rated_shipment_details].is_a?(Array) ? details[:rated_shipment_details].first : details[:rated_shipment_details]
             cost = shipment_detail[:shipment_rate_detail][:total_net_charge]
             
