@@ -223,7 +223,7 @@ module Shippinglogic
         def parse_response(response)
           details = response[:completed_shipment_detail]
           rate_details = details[:shipment_rating][:shipment_rate_details]
-          rate = rate_details[:total_net_charge] || rate_details.first[:total_net_charge]
+          rate = [rate_details].flatten.first[:total_net_charge]
           package_details = details[:completed_package_details]
           
           shipment = Shipment.new
