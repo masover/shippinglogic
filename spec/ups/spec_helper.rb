@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 Shippinglogic::UPS.options[:test] = true
 
-Spec::Runner.configure do |config|
+RSpec.configure do |config|
   config.before(:each) do
     FakeWeb.clean_registry
     
