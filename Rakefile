@@ -25,9 +25,11 @@ RSpec::Core::RakeTask.new(:spec) do |spec|
   spec.pattern = 'spec/**/*_spec.rb'
 end
 
-RSpec::Core::RakeTask.new(:rcov) do |spec|
-  spec.pattern = 'spec/**/*_spec.rb'
-  spec.rcov = true
+namespace :spec do
+  task :coverage do
+    ENV['COVERAGE'] = 'true'
+    Rake::Task['spec'].execute
+  end
 end
 
 task :spec => :check_dependencies
