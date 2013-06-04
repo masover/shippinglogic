@@ -18,7 +18,7 @@ describe "FedEx Rate" do
     rate.saturday.should == false
     rate.delivered_by.should == Time.parse("Fri Aug 07 08:00:00 -0400 2009")
     rate.speed.should == 86400 # 1.day
-    rate.rate.should == 70.01
+    rate.rate.should == BigDecimal.new('70.01')
     rate.currency.should == "USD"
   end
   
